@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 export const WhySponsorSection = (): JSX.Element => {
   const [activeCard, setActiveCard] = useState(0);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % 4);
@@ -99,84 +98,83 @@ export const WhySponsorSection = (): JSX.Element => {
     />
   );
   const Bean = ({
-  className,
-  style,
-}: {
-  className?: string;
-  style?: React.CSSProperties;
-}) => (
-  <svg
-    className={className}
-    style={style}
-    width="60"
-    height="40"
-    viewBox="0 0 60 40"
-    fill="none"
-  >
-    <ellipse
-      cx="30"
-      cy="20"
-      rx="28"
-      ry="16"
-      fill="url(#beanGradient)"
-      opacity="0.8"
-    />
-    <defs>
-      <linearGradient
-        id="beanGradient"
-        x1="0"
-        y1="0"
-        x2="60"
-        y2="40"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#fff" stopOpacity="0.7" />
-        <stop offset="1" stopColor="#800000" stopOpacity="0.5" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-const Bubble = ({
-  className,
-  style,
-}: {
-  className?: string;
-  style?: React.CSSProperties;
-}) => (
-  <svg
-    className={className}
-    style={style}
-    width="80"
-    height="80"
-    viewBox="0 0 80 80"
-    fill="none"
-  >
-    <ellipse
-      cx="40"
-      cy="40"
-      rx="38"
-      ry="38"
-      fill="url(#bubbleGradient)"
-      opacity="0.7"
-    />
-    <defs>
-      <radialGradient
-        id="bubbleGradient"
-        cx="0"
-        cy="0"
-        r="1"
-        gradientTransform="translate(40 40) scale(38)"
-      >
-        <stop stopColor="#fff" stopOpacity="0.8" />
-        <stop offset="1" stopColor="#800000" stopOpacity="0.3" />
-      </radialGradient>
-    </defs>
-  </svg>
-);
+    className,
+    style,
+  }: {
+    className?: string;
+    style?: React.CSSProperties;
+  }) => (
+    <svg
+      className={className}
+      style={style}
+      width="60"
+      height="40"
+      viewBox="0 0 60 40"
+      fill="none"
+    >
+      <ellipse
+        cx="30"
+        cy="20"
+        rx="28"
+        ry="16"
+        fill="url(#beanGradient)"
+        opacity="0.8"
+      />
+      <defs>
+        <linearGradient
+          id="beanGradient"
+          x1="0"
+          y1="0"
+          x2="60"
+          y2="40"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#fff" stopOpacity="0.7" />
+          <stop offset="1" stopColor="#800000" stopOpacity="0.5" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+  const Bubble = ({
+    className,
+    style,
+  }: {
+    className?: string;
+    style?: React.CSSProperties;
+  }) => (
+    <svg
+      className={className}
+      style={style}
+      width="80"
+      height="80"
+      viewBox="0 0 80 80"
+      fill="none"
+    >
+      <ellipse
+        cx="40"
+        cy="40"
+        rx="38"
+        ry="38"
+        fill="url(#bubbleGradient)"
+        opacity="0.7"
+      />
+      <defs>
+        <radialGradient
+          id="bubbleGradient"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientTransform="translate(40 40) scale(38)"
+        >
+          <stop stopColor="#fff" stopOpacity="0.8" />
+          <stop offset="1" stopColor="#800000" stopOpacity="0.3" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
 
- return (
+  return (
     <section className="relative w-full min-h-screen py-20 overflow-hidden">
-  
       <div className="absolute inset-0 bg-gradient-to-br from-red-900 via-red-800 to-black"></div>
 
       <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-5"></div>
@@ -261,7 +259,6 @@ const Bubble = ({
       </div>
 
       <div className="container mx-auto relative z-20 px-4">
- 
         <div className="text-center mb-16">
           <h2 className="[font-family:'Poppins',sans-serif] text-5xl lg:text-6xl font-bold text-white mb-6 tracking-wide">
             Why be <span className="text-red-400">part of it</span>?
@@ -278,11 +275,9 @@ const Bubble = ({
           </p>
         </div>
 
-    
         <div className="relative max-w-5xl mx-auto mb-32">
-
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-500 z-10"></div>
-
+          {/* This is the changed line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-500 z-10"></div>
 
           <div className="space-y-20">
             {benefitCards.map((card, index) => (
@@ -292,7 +287,6 @@ const Bubble = ({
                   index % 2 === 0 ? "justify-start" : "justify-end"
                 }`}
               >
-
                 <div
                   className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-red-400 z-20 ${
                     activeCard === index
@@ -329,7 +323,6 @@ const Bubble = ({
                     onClick={() => setActiveCard(index)}
                   >
                     <CardContent className="relative p-8">
-                 
                       <h3 className="[font-family:'Poppins',sans-serif] font-bold text-2xl text-black mb-4">
                         {card.title === "Insider Stories" ? (
                           <>
@@ -361,7 +354,7 @@ const Bubble = ({
           </div>
         </div>
 
-         <div  id="speakers" className="container mx-auto mt-32 relative z-10 px-4">
+        <div id="speakers" className="container mx-auto mt-32 relative z-10 px-4">
           <Card className="w-full max-w-6xl mx-auto bg-gradient-to-br from-white via-gray-50 to-white rounded-[60px] overflow-hidden shadow-[0px_25px_80px_rgba(0,0,0,0.6)] border-4 border-white/30 backdrop-blur-lg">
             <CardContent className="p-12 lg:p-20 relative">
               <div className="text-center mb-16">
@@ -434,25 +427,10 @@ const Bubble = ({
               ></div>
             </CardContent>
           </Card>
-        </div> 
-   
-        {/* <div className="mt-32 text-center">
-          <div className="relative inline-block group">
-            <div className="absolute -inset-6 bg-red-600/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-1000"></div>
-            <div className="relative bg-gradient-to-br from-black/80 via-red-900/40 to-black/80 backdrop-blur-2xl p-8 rounded-3xl border-2 border-red-600/30 shadow-[0_30px_80px_rgba(0,0,0,0.7)] transition-all duration-1000 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-transparent to-red-600/5 rounded-3xl"></div>
-              <h2 className="relative [font-family:'Poppins',sans-serif] font-bold text-4xl lg:text-5xl text-white mb-4">
-                Our Sponsors
-              </h2>
-              <p className="relative [font-family:'Poppins',sans-serif] text-xl lg:text-2xl text-gray-400 font-normal">
-                People who helped to make this event happen
-              </p>
-            </div>
-          </div>
-        </div> */}
+        </div>
       </div>
 
-      <style >{`
+      <style>{`
         @keyframes floatSlow {
           0%,100% { transform: translateY(0px) scale(1); opacity: 0.3; }
           50% { transform: translateY(-15px) scale(1.1); opacity: 0.5; }
@@ -530,7 +508,7 @@ const Bubble = ({
         }
         @keyframes beanAppearMove2 {
           0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
-          10%  { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotate(0deg);}
           50%  { opacity: 1; transform: translateY(40px) rotate(25deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
           90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
