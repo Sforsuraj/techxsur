@@ -182,14 +182,35 @@ export const WhySponsorSection = (): JSX.Element => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_40%,rgba(220,38,38,0.2),transparent)]"></div>
 
       <Bubble className="absolute left-10 top-10 animate-bubble1 z-0" />
-      <Bubble className="absolute right-16 top-32 animate-bubble2 z-0" style={{ width: 60, height: 60 }} />
-      <Bubble className="absolute left-1/2 bottom-10 animate-bubble3 z-0" style={{ width: 100, height: 100 }} />
-      <Bubble className="absolute left-1/4 top-1/3 animate-bubble4 z-0" style={{ width: 70, height: 70 }} />
-      <Bubble className="absolute right-1/4 bottom-1/4 animate-bubble5 z-0" style={{ width: 90, height: 90 }} />
+      <Bubble
+        className="absolute right-16 top-32 animate-bubble2 z-0"
+        style={{ width: 60, height: 60 }}
+      />
+      <Bubble
+        className="absolute left-1/2 bottom-10 animate-bubble3 z-0"
+        style={{ width: 100, height: 100 }}
+      />
+      <Bubble
+        className="absolute left-1/4 top-1/3 animate-bubble4 z-0"
+        style={{ width: 70, height: 70 }}
+      />
+      <Bubble
+        className="absolute right-1/4 bottom-1/4 animate-bubble5 z-0"
+        style={{ width: 90, height: 90 }}
+      />
       <Bean className="absolute right-10 bottom-24 animate-bean1 z-0" />
-      <Bean className="absolute left-24 top-1/2 animate-bean2 z-0" style={{ width: 80, height: 50 }} />
-      <Bean className="absolute left-1/3 bottom-1/4 animate-bean3 z-0" style={{ width: 70, height: 40 }} />
-      <Bean className="absolute right-1/3 top-1/4 animate-bean4 z-0" style={{ width: 90, height: 60 }} />
+      <Bean
+        className="absolute left-24 top-1/2 animate-bean2 z-0"
+        style={{ width: 80, height: 50 }}
+      />
+      <Bean
+        className="absolute left-1/3 bottom-1/4 animate-bean3 z-0"
+        style={{ width: 70, height: 40 }}
+      />
+      <Bean
+        className="absolute right-1/3 top-1/4 animate-bean4 z-0"
+        style={{ width: 90, height: 60 }}
+      />
 
       <div className="absolute inset-0 z-0">
         <FloatingParticle
@@ -276,42 +297,34 @@ export const WhySponsorSection = (): JSX.Element => {
         </div>
 
         <div className="relative max-w-5xl mx-auto mb-32">
-          {/* Vertical line for mobile on the left, centered for large screens */}
-          <div className="absolute left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-0.5 h-full bg-red-500 z-10"></div>
+          {/* Apply hidden for mobile, lg:block for larger screens */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-500 z-10 hidden lg:block"></div>
 
           <div className="space-y-20">
             {benefitCards.map((card, index) => (
               <div
                 key={index}
-                // For mobile, always justify-start. For large screens, alternate.
-                className={`relative flex items-center justify-start lg:${
-                  index % 2 === 0 ? "justify-start" : "justify-end"
+                className={`relative flex items-center ${
+                  // On mobile, always center the card, on larger screens, alternate justification
+                  window.innerWidth < 1024 ? "justify-center" : index % 2 === 0 ? "justify-start" : "justify-end"
                 }`}
               >
-                {/* Circular indicator positioning */}
                 <div
-                  className={`absolute left-8 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-red-400 z-20 ${
+                  className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-red-400 z-20 ${
                     activeCard === index
                       ? "animate-pulse shadow-[0_0_20px_rgba(220,38,38,0.8)]"
                       : ""
-                  }`}
+                  } ${window.innerWidth < 1024 ? "hidden" : ""}`} // Hide the central circle on mobile
                 />
 
-                {/* Animated border/shape positioning */}
                 <div
-                  className={`absolute top-1/2 left-8 ml-2 w-16 h-16 border-2 border-red-500/60 rounded-full border-l-transparent border-b-transparent z-15 lg:${
-                    index % 2 === 0
-                      ? "left-1/2"
-                      : "right-1/2"
-                  } lg:${
-                    index % 2 === 0
-                      ? "ml-2"
-                      : "mr-2"
-                  } lg:${
+                  className={`absolute top-1/2 ${
+                    index % 2 === 0 ? "left-1/2 ml-2" : "right-1/2 mr-2"
+                  } w-16 h-16 border-2 border-red-500/60 rounded-full ${
                     index % 2 === 0
                       ? "border-l-transparent border-b-transparent"
                       : "border-r-transparent border-b-transparent"
-                  }`}
+                  } z-15 ${window.innerWidth < 1024 ? "hidden" : ""}`} // Hide the decorative border on mobile
                   style={{
                     transform:
                       index % 2 === 0
@@ -321,10 +334,7 @@ export const WhySponsorSection = (): JSX.Element => {
                 />
 
                 <div
-                  // Adjust margin for mobile to accommodate the left-aligned line
-                  className={`w-full max-w-sm ml-16 lg:${
-                    index % 2 === 0 ? "mr-8" : "ml-8"
-                  }`}
+                  className={`w-full max-w-sm ${index % 2 === 0 ? "mr-8" : "ml-8"} ${window.innerWidth < 1024 ? "mx-auto" : ""}`} // Center card on mobile
                 >
                   <Card
                     className={`group bg-white/95 backdrop-blur-sm rounded-3xl border-0 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-700 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
@@ -477,66 +487,66 @@ export const WhySponsorSection = (): JSX.Element => {
           animation: beanAppearMove4 17s infinite cubic-bezier(.4,0,.2,1) alternate;
         }
         @keyframes bubbleAppearMove1 {
-          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
-          10%  { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
-          50%  { opacity: 1; transform: translateY(-40px) scale(1.15) rotateY(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
+          10% { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
+          50% { opacity: 1; transform: translateY(-40px) scale(1.15) rotateY(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
         }
         @keyframes bubbleAppearMove2 {
-          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
-          10%  { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
-          50%  { opacity: 1; transform: translateY(30px) scale(0.95) rotateX(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
+          10% { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
+          50% { opacity: 1; transform: translateY(30px) scale(0.95) rotateX(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
         }
         @keyframes bubbleAppearMove3 {
-          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
-          10%  { opacity: 1; transform: translateY(0) scale(1) rotateZ(10deg);}
-          50%  { opacity: 1; transform: translateY(-60px) scale(1.2) rotateZ(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
+          10% { opacity: 1; transform: translateY(0) scale(1) rotateZ(10deg);}
+          50% { opacity: 1; transform: translateY(-60px) scale(1.2) rotateZ(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
         }
         @keyframes bubbleAppearMove4 {
-          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
-          10%  { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
-          50%  { opacity: 1; transform: translateY(-30px) scale(1.1) rotateY(20deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
+          10% { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
+          50% { opacity: 1; transform: translateY(-30px) scale(1.1) rotateY(20deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
         }
         @keyframes bubbleAppearMove5 {
-          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
-          10%  { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
-          50%  { opacity: 1; transform: translateY(40px) scale(1.2) rotateX(20deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
+          10% { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
+          50% { opacity: 1; transform: translateY(40px) scale(1.2) rotateX(20deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
         }
         @keyframes beanAppearMove1 {
-          0%   { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
-          10%  { opacity: 1; transform: translateX(0) rotate(-10deg) scale(1);}
-          50%  { opacity: 1; transform: translateX(-30px) rotate(20deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
+          10% { opacity: 1; transform: translateX(0) rotate(-10deg) scale(1);}
+          50% { opacity: 1; transform: translateX(-30px) rotate(20deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
         }
         @keyframes beanAppearMove2 {
-          0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
-          10%  { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
-          50%  { opacity: 1; transform: translateY(40px) rotate(25deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
+          10% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
+          50% { opacity: 1; transform: translateY(40px) rotate(25deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
         }
         @keyframes beanAppearMove3 {
-          0%   { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
-          10%  { opacity: 1; transform: translateX(0) rotate(-5deg) scale(1);}
-          50%  { opacity: 1; transform: translateX(25px) rotate(15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
+          10% { opacity: 1; transform: translateX(0) rotate(-5deg) scale(1);}
+          50% { opacity: 1; transform: translateX(25px) rotate(15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
         }
         @keyframes beanAppearMove4 {
-          0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
-          10%  { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
-          50%  { opacity: 1; transform: translateY(-35px) rotate(-15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90%  { opacity: 1; }
+          0%  { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
+          10% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
+          50% { opacity: 1; transform: translateY(-35px) rotate(-15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90% { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
         }
       `}</style>
