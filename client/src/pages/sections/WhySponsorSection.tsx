@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const WhySponsorSection = (): JSX.Element => {
   const [activeCard, setActiveCard] = useState(0);
 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % 4);
@@ -98,83 +99,84 @@ export const WhySponsorSection = (): JSX.Element => {
     />
   );
   const Bean = ({
-    className,
-    style,
-  }: {
-    className?: string;
-    style?: React.CSSProperties;
-  }) => (
-    <svg
-      className={className}
-      style={style}
-      width="60"
-      height="40"
-      viewBox="0 0 60 40"
-      fill="none"
-    >
-      <ellipse
-        cx="30"
-        cy="20"
-        rx="28"
-        ry="16"
-        fill="url(#beanGradient)"
-        opacity="0.8"
-      />
-      <defs>
-        <linearGradient
-          id="beanGradient"
-          x1="0"
-          y1="0"
-          x2="60"
-          y2="40"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#fff" stopOpacity="0.7" />
-          <stop offset="1" stopColor="#800000" stopOpacity="0.5" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-  const Bubble = ({
-    className,
-    style,
-  }: {
-    className?: string;
-    style?: React.CSSProperties;
-  }) => (
-    <svg
-      className={className}
-      style={style}
-      width="80"
-      height="80"
-      viewBox="0 0 80 80"
-      fill="none"
-    >
-      <ellipse
-        cx="40"
-        cy="40"
-        rx="38"
-        ry="38"
-        fill="url(#bubbleGradient)"
-        opacity="0.7"
-      />
-      <defs>
-        <radialGradient
-          id="bubbleGradient"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientTransform="translate(40 40) scale(38)"
-        >
-          <stop stopColor="#fff" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#800000" stopOpacity="0.3" />
-        </radialGradient>
-      </defs>
-    </svg>
-  );
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) => (
+  <svg
+    className={className}
+    style={style}
+    width="60"
+    height="40"
+    viewBox="0 0 60 40"
+    fill="none"
+  >
+    <ellipse
+      cx="30"
+      cy="20"
+      rx="28"
+      ry="16"
+      fill="url(#beanGradient)"
+      opacity="0.8"
+    />
+    <defs>
+      <linearGradient
+        id="beanGradient"
+        x1="0"
+        y1="0"
+        x2="60"
+        y2="40"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#fff" stopOpacity="0.7" />
+        <stop offset="1" stopColor="#800000" stopOpacity="0.5" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+const Bubble = ({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) => (
+  <svg
+    className={className}
+    style={style}
+    width="80"
+    height="80"
+    viewBox="0 0 80 80"
+    fill="none"
+  >
+    <ellipse
+      cx="40"
+      cy="40"
+      rx="38"
+      ry="38"
+      fill="url(#bubbleGradient)"
+      opacity="0.7"
+    />
+    <defs>
+      <radialGradient
+        id="bubbleGradient"
+        cx="0"
+        cy="0"
+        r="1"
+        gradientTransform="translate(40 40) scale(38)"
+      >
+        <stop stopColor="#fff" stopOpacity="0.8" />
+        <stop offset="1" stopColor="#800000" stopOpacity="0.3" />
+      </radialGradient>
+    </defs>
+  </svg>
+);
 
-  return (
+ return (
     <section className="relative w-full min-h-screen py-20 overflow-hidden">
+  
       <div className="absolute inset-0 bg-gradient-to-br from-red-900 via-red-800 to-black"></div>
 
       <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-5"></div>
@@ -182,35 +184,14 @@ export const WhySponsorSection = (): JSX.Element => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_40%,rgba(220,38,38,0.2),transparent)]"></div>
 
       <Bubble className="absolute left-10 top-10 animate-bubble1 z-0" />
-      <Bubble
-        className="absolute right-16 top-32 animate-bubble2 z-0"
-        style={{ width: 60, height: 60 }}
-      />
-      <Bubble
-        className="absolute left-1/2 bottom-10 animate-bubble3 z-0"
-        style={{ width: 100, height: 100 }}
-      />
-      <Bubble
-        className="absolute left-1/4 top-1/3 animate-bubble4 z-0"
-        style={{ width: 70, height: 70 }}
-      />
-      <Bubble
-        className="absolute right-1/4 bottom-1/4 animate-bubble5 z-0"
-        style={{ width: 90, height: 90 }}
-      />
+      <Bubble className="absolute right-16 top-32 animate-bubble2 z-0" style={{ width: 60, height: 60 }} />
+      <Bubble className="absolute left-1/2 bottom-10 animate-bubble3 z-0" style={{ width: 100, height: 100 }} />
+      <Bubble className="absolute left-1/4 top-1/3 animate-bubble4 z-0" style={{ width: 70, height: 70 }} />
+      <Bubble className="absolute right-1/4 bottom-1/4 animate-bubble5 z-0" style={{ width: 90, height: 90 }} />
       <Bean className="absolute right-10 bottom-24 animate-bean1 z-0" />
-      <Bean
-        className="absolute left-24 top-1/2 animate-bean2 z-0"
-        style={{ width: 80, height: 50 }}
-      />
-      <Bean
-        className="absolute left-1/3 bottom-1/4 animate-bean3 z-0"
-        style={{ width: 70, height: 40 }}
-      />
-      <Bean
-        className="absolute right-1/3 top-1/4 animate-bean4 z-0"
-        style={{ width: 90, height: 60 }}
-      />
+      <Bean className="absolute left-24 top-1/2 animate-bean2 z-0" style={{ width: 80, height: 50 }} />
+      <Bean className="absolute left-1/3 bottom-1/4 animate-bean3 z-0" style={{ width: 70, height: 40 }} />
+      <Bean className="absolute right-1/3 top-1/4 animate-bean4 z-0" style={{ width: 90, height: 60 }} />
 
       <div className="absolute inset-0 z-0">
         <FloatingParticle
@@ -280,6 +261,7 @@ export const WhySponsorSection = (): JSX.Element => {
       </div>
 
       <div className="container mx-auto relative z-20 px-4">
+ 
         <div className="text-center mb-16">
           <h2 className="[font-family:'Poppins',sans-serif] text-5xl lg:text-6xl font-bold text-white mb-6 tracking-wide">
             Why be <span className="text-red-400">part of it</span>?
@@ -296,25 +278,27 @@ export const WhySponsorSection = (): JSX.Element => {
           </p>
         </div>
 
+    
         <div className="relative max-w-5xl mx-auto mb-32">
-          {/* Apply hidden for mobile, lg:block for larger screens */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-500 z-10 hidden lg:block"></div>
+
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-500 z-10"></div>
+
 
           <div className="space-y-20">
             {benefitCards.map((card, index) => (
               <div
                 key={index}
                 className={`relative flex items-center ${
-                  // On mobile, always center the card, on larger screens, alternate justification
-                  window.innerWidth < 1024 ? "justify-center" : index % 2 === 0 ? "justify-start" : "justify-end"
+                  index % 2 === 0 ? "justify-start" : "justify-end"
                 }`}
               >
+
                 <div
                   className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-red-400 z-20 ${
                     activeCard === index
                       ? "animate-pulse shadow-[0_0_20px_rgba(220,38,38,0.8)]"
                       : ""
-                  } ${window.innerWidth < 1024 ? "hidden" : ""}`} // Hide the central circle on mobile
+                  }`}
                 />
 
                 <div
@@ -324,7 +308,7 @@ export const WhySponsorSection = (): JSX.Element => {
                     index % 2 === 0
                       ? "border-l-transparent border-b-transparent"
                       : "border-r-transparent border-b-transparent"
-                  } z-15 ${window.innerWidth < 1024 ? "hidden" : ""}`} // Hide the decorative border on mobile
+                  } z-15`}
                   style={{
                     transform:
                       index % 2 === 0
@@ -334,7 +318,7 @@ export const WhySponsorSection = (): JSX.Element => {
                 />
 
                 <div
-                  className={`w-full max-w-sm ${index % 2 === 0 ? "mr-8" : "ml-8"} ${window.innerWidth < 1024 ? "mx-auto" : ""}`} // Center card on mobile
+                  className={`w-full max-w-sm ${index % 2 === 0 ? "mr-8" : "ml-8"}`}
                 >
                   <Card
                     className={`group bg-white/95 backdrop-blur-sm rounded-3xl border-0 shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-700 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
@@ -345,6 +329,7 @@ export const WhySponsorSection = (): JSX.Element => {
                     onClick={() => setActiveCard(index)}
                   >
                     <CardContent className="relative p-8">
+                 
                       <h3 className="[font-family:'Poppins',sans-serif] font-bold text-2xl text-black mb-4">
                         {card.title === "Insider Stories" ? (
                           <>
@@ -376,7 +361,7 @@ export const WhySponsorSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div id="speakers" className="container mx-auto mt-32 relative z-10 px-4">
+         <div  id="speakers" className="container mx-auto mt-32 relative z-10 px-4">
           <Card className="w-full max-w-6xl mx-auto bg-gradient-to-br from-white via-gray-50 to-white rounded-[60px] overflow-hidden shadow-[0px_25px_80px_rgba(0,0,0,0.6)] border-4 border-white/30 backdrop-blur-lg">
             <CardContent className="p-12 lg:p-20 relative">
               <div className="text-center mb-16">
@@ -449,10 +434,25 @@ export const WhySponsorSection = (): JSX.Element => {
               ></div>
             </CardContent>
           </Card>
-        </div>
+        </div> 
+   
+        {/* <div className="mt-32 text-center">
+          <div className="relative inline-block group">
+            <div className="absolute -inset-6 bg-red-600/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-1000"></div>
+            <div className="relative bg-gradient-to-br from-black/80 via-red-900/40 to-black/80 backdrop-blur-2xl p-8 rounded-3xl border-2 border-red-600/30 shadow-[0_30px_80px_rgba(0,0,0,0.7)] transition-all duration-1000 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-transparent to-red-600/5 rounded-3xl"></div>
+              <h2 className="relative [font-family:'Poppins',sans-serif] font-bold text-4xl lg:text-5xl text-white mb-4">
+                Our Sponsors
+              </h2>
+              <p className="relative [font-family:'Poppins',sans-serif] text-xl lg:text-2xl text-gray-400 font-normal">
+                People who helped to make this event happen
+              </p>
+            </div>
+          </div>
+        </div> */}
       </div>
 
-      <style>{`
+      <style >{`
         @keyframes floatSlow {
           0%,100% { transform: translateY(0px) scale(1); opacity: 0.3; }
           50% { transform: translateY(-15px) scale(1.1); opacity: 0.5; }
@@ -487,66 +487,66 @@ export const WhySponsorSection = (): JSX.Element => {
           animation: beanAppearMove4 17s infinite cubic-bezier(.4,0,.2,1) alternate;
         }
         @keyframes bubbleAppearMove1 {
-          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
-          10% { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
-          50% { opacity: 1; transform: translateY(-40px) scale(1.15) rotateY(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
+          50%  { opacity: 1; transform: translateY(-40px) scale(1.15) rotateY(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
         }
         @keyframes bubbleAppearMove2 {
-          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
-          10% { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
-          50% { opacity: 1; transform: translateY(30px) scale(0.95) rotateX(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
+          50%  { opacity: 1; transform: translateY(30px) scale(0.95) rotateX(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
         }
         @keyframes bubbleAppearMove3 {
-          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
-          10% { opacity: 1; transform: translateY(0) scale(1) rotateZ(10deg);}
-          50% { opacity: 1; transform: translateY(-60px) scale(1.2) rotateZ(25deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotateZ(10deg);}
+          50%  { opacity: 1; transform: translateY(-60px) scale(1.2) rotateZ(25deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateZ(0deg);}
         }
         @keyframes bubbleAppearMove4 {
-          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
-          10% { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
-          50% { opacity: 1; transform: translateY(-30px) scale(1.1) rotateY(20deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotateY(10deg);}
+          50%  { opacity: 1; transform: translateY(-30px) scale(1.1) rotateY(20deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateY(0deg);}
         }
         @keyframes bubbleAppearMove5 {
-          0%  { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
-          10% { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
-          50% { opacity: 1; transform: translateY(40px) scale(1.2) rotateX(20deg); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
+          10%  { opacity: 1; transform: translateY(0) scale(1) rotateX(10deg);}
+          50%  { opacity: 1; transform: translateY(40px) scale(1.2) rotateX(20deg); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) scale(0.7) rotateX(0deg);}
         }
         @keyframes beanAppearMove1 {
-          0%  { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
-          10% { opacity: 1; transform: translateX(0) rotate(-10deg) scale(1);}
-          50% { opacity: 1; transform: translateX(-30px) rotate(20deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
+          10%  { opacity: 1; transform: translateX(0) rotate(-10deg) scale(1);}
+          50%  { opacity: 1; transform: translateX(-30px) rotate(20deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateX(0) rotate(-10deg) scale(0.7);}
         }
         @keyframes beanAppearMove2 {
-          0%  { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
-          10% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
-          50% { opacity: 1; transform: translateY(40px) rotate(25deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
+          10%  { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
+          50%  { opacity: 1; transform: translateY(40px) rotate(25deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
         }
         @keyframes beanAppearMove3 {
-          0%  { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
-          10% { opacity: 1; transform: translateX(0) rotate(-5deg) scale(1);}
-          50% { opacity: 1; transform: translateX(25px) rotate(15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
+          10%  { opacity: 1; transform: translateX(0) rotate(-5deg) scale(1);}
+          50%  { opacity: 1; transform: translateX(25px) rotate(15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateX(0) rotate(-5deg) scale(0.7);}
         }
         @keyframes beanAppearMove4 {
-          0%  { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
-          10% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
-          50% { opacity: 1; transform: translateY(-35px) rotate(-15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
-          90% { opacity: 1; }
+          0%   { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
+          10%  { opacity: 1; transform: translateY(0) rotate(0deg) scale(1);}
+          50%  { opacity: 1; transform: translateY(-35px) rotate(-15deg) scale(1.1); filter: drop-shadow(0 8px 32px #80000088);}
+          90%  { opacity: 1; }
           100% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.7);}
         }
       `}</style>
